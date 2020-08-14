@@ -1,4 +1,5 @@
 import tweepy
+import os
 import json
 
 class MyStreamListener(tweepy.StreamListener):
@@ -14,9 +15,15 @@ class MyStreamListener(tweepy.StreamListener):
     def on_error(self, status):
         print("Error, putito...")
 
+# Config vars
+token = os.environ['API_KEY']
+tokensec = os.environ['API_KEY_SECRET']
+tokenacc = os.environ['ACCESS_TOKEN']
+tokenaccsec = os.environ['ACCESS_TOKEN_SECRET']
+
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler("API_KEY", "API_KEY_SECRET")
-auth.set_access_token("ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+auth = tweepy.OAuthHandler(token,tokensec)
+auth.set_access_token(tokenacc,tokenaccsec)
 
 # Create API object
 api = tweepy.API(auth,  wait_on_rate_limit=True,
