@@ -1,8 +1,6 @@
-# List of required packages (Dependencies)
+# List of required packages (Dependencies) Solo jala especificando la versión, puta madre
 tweepy==3.8.0
-json
-
-# If you need to specify a version
+# json
 requests==2.16.5
 
 # Or you need not a pip package, @'...' specifies git branch
