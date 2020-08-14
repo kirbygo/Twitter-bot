@@ -1,5 +1,5 @@
 # List of required packages (Dependencies)
-tweetpy
+tweepy==3.8.0
 json
 
 # If you need to specify a version
