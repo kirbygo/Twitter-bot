@@ -34,6 +34,9 @@ stream.filter(track=["en base a"], languages=["es"])
 
 
 
+
+
+
 # Crear un tweet
 # api.update_status("Ando aprendiendo Tweepy, a ver si sí jala :P")
 
