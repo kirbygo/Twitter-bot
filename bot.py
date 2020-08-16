@@ -35,9 +35,9 @@ try:
 except:
     print("Error during authentication")
 
-#tweets_listener = MyStreamListener(api)
-#stream = tweepy.Stream(api.auth, tweets_listener)
-#stream.filter(track=["en base a"], languages=["es"])
+tweets_listener = MyStreamListener(api)
+stream = tweepy.Stream(api.auth, tweets_listener)
+stream.filter(track=["en base a"], languages=["es"])
 
 
 
