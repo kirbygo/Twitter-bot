@@ -45,7 +45,7 @@ except:
 
 
 # Crear un tweet
-api.update_status("Ando aprendiendo Tweepy, a ver si sí jala :P")
+api.update_status("Desde Heroku")
 
 # Buscar tweets
 # for tweet in api.search(q="Python", lang="en", rpp=10):
