@@ -1,19 +1,7 @@
 import tweepy
 import os
+import time
 #import json
-
-class MyStreamListener(tweepy.StreamListener):
-    def __init__(self, api):
-        self.api = api
-        self.me = api.me()
-
-    def on_status(self, status):
-        if status.retweeted_status:
-            return
-        print(f"{tweet.user.name}:{tweet.text}")
-
-    def on_error(self, status):
-        print("Error, putito...")
 
 # Config vars
 token = os.environ['API_KEY']
@@ -26,7 +14,7 @@ auth = tweepy.OAuthHandler(token,tokensec)
 auth.set_access_token(tokenacc,tokenaccsec)
 
 # Create API object
-api = tweepy.API(auth, timeout=300, wait_on_rate_limit=True,
+api = tweepy.API(auth, wait_on_rate_limit=True,
     wait_on_rate_limit_notify=True)
 
 try:
@@ -37,24 +25,16 @@ except:
 
 
 def bot(tweet_text, screen_name):
-    ''' Toma el nombre y texto de los tweets escupe lo que quiera
-    '''
-
     reply = 'Hola, @' + screen_name + ': ' + 'Solo pasaba para informarte que no se dice "en base a", se dice "con base en". Saludos! : ' + tweet_text
-
     return reply
 
 
 class BotStreamListener(tweepy.StreamListener):
-    ''' bot listener
-    '''
     def __init__(self, api):
         self.api = api
         self.me = api.me()
 
     def on_status(self, tweet):
-        ''' Lo llama el StreamListener el filtro machea
-        '''
         print('----'*20)
         print('El tweet:')
         print(tweet.user)
@@ -88,5 +68,5 @@ bot_listener = BotStreamListener(api)
 my_bot = tweepy.Stream(auth=api.auth, listener=bot_listener)
 me = api.me()
 
-# Inicia el listener
+# filtrín
 my_bot.filter(track=['en base a'], languages=["es"])
