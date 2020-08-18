@@ -24,7 +24,7 @@ except:
     print("Error during authentication")
 
 def bot(tweet_text, screen_name):
-    reply = 'Hola, @' + screen_name + ': ' + 'Solo pasaba para informarte que no se dice "en base a", se dice "con base en". ¡Saludos! -> ' + tweet_text
+    reply = 'Hola, @' + screen_name + ': ' + 'Solo pasaba para informarte que no se dice "en base a", se dice "con base en". Saludos! -> ' + tweet_text
     return reply
 
 class BotStreamListener(tweepy.StreamListener):
