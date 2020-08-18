@@ -23,11 +23,9 @@ try:
 except:
     print("Error during authentication")
 
-
 def bot(tweet_text, screen_name):
     reply = 'Hola, @' + screen_name + ': ' + 'Solo pasaba para informarte que no se dice "en base a", se dice "con base en". Saludos! : ' + tweet_text
     return reply
-
 
 class BotStreamListener(tweepy.StreamListener):
     def __init__(self, api):
@@ -35,15 +33,9 @@ class BotStreamListener(tweepy.StreamListener):
         self.me = api.me()
 
     def on_status(self, tweet):
-        print('----'*20)
-        print('El tweet:')
-        print(tweet.user)
-        print(tweet.text)
-        print('----'*20)
-
         # Ignorar los propios, RT y que diga "en base a" literal haha
         if tweet.user.id_str == self.me.id_str:
-            print('ignoring tweets from our bot')
+            print('ignoramos los propios')
             return
         
         if (not tweet.retweeted) and ('RT @' not in tweet.text) and ('en base a' in tweet.text):
@@ -51,15 +43,12 @@ class BotStreamListener(tweepy.StreamListener):
             try:
                 reply = bot(tweet.text, tweet.user.screen_name)
             except Exception as exc:
-                print(f'oh no...something happened: {exc}')
+                print(f'el pedo: {exc}')
 
             if reply:
-                print(f'replying with: {reply}')
+                print(f'RESPONDEMOS: {reply}')
                 api.update_status(f"@{tweet.user.screen_name} {reply}", tweet.id_str)
-
-            else:
-                print('nothing to reply with! we wont send a reply')
-
+                time.sleep(180)
 
 # Listener
 bot_listener = BotStreamListener(api)
