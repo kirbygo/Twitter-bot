@@ -26,7 +26,7 @@ auth = tweepy.OAuthHandler(token,tokensec)
 auth.set_access_token(tokenacc,tokenaccsec)
 
 # Create API object
-api = tweepy.API(auth,  wait_on_rate_limit=True,
+api = tweepy.API(auth, timeout=300, wait_on_rate_limit=True,
     wait_on_rate_limit_notify=True)
 
 try:
