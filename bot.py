@@ -38,7 +38,7 @@ class BotStreamListener(tweepy.StreamListener):
             print('ignoramos los propios')
             return
         
-        if (not tweet.retweeted) and ('RT @' not in tweet.text) and ('en base a' in tweet.text) and ('bot' not in tweet.text) and ('@en_base_a_bot' not in tweet.text):
+        if (not tweet.retweeted) and ('RT @' not in tweet.text) and ('en base a' in tweet.text) and ('bot' not in tweet.text) and ('@en_base_a_bot' not in tweet.text) and (tweet.user.followers_count >= 1000):
             reply = None
             try:
                 reply = bot(tweet.text, tweet.user.screen_name)
@@ -48,7 +48,7 @@ class BotStreamListener(tweepy.StreamListener):
             if reply:
                 print(f'RESPONDEMOS: {reply}')
                 api.update_status(f"@{tweet.user.screen_name} {reply}", tweet.id_str)
-                time.sleep(61)
+                #time.sleep(61)
 
 # Listener
 bot_listener = BotStreamListener(api)
