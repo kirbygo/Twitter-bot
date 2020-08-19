@@ -48,7 +48,7 @@ class BotStreamListener(tweepy.StreamListener):
             if reply:
                 print(f'RESPONDEMOS: {reply}')
                 api.update_status(f"@{tweet.user.screen_name} {reply}", tweet.id_str)
-                #time.sleep(61)
+                #time.sleep(101)
 
 # Listener
 bot_listener = BotStreamListener(api)
