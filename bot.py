@@ -38,7 +38,7 @@ class BotStreamListener(tweepy.StreamListener):
             print('ignoramos los propios')
             return
         
-        if (not tweet.retweeted) and ('RT @' not in tweet.text) and ('en base a' in tweet.text) and ('bot' not in tweet.text) and ('@en_base_a_bot' not in tweet.text) and (tweet.user.followers_count >= 11000):
+        if (not tweet.retweeted) and ('RT @' not in tweet.text) and ('en base a' in tweet.text) and ('bot' not in tweet.text) and ('@en_base_a_bot' not in tweet.text) and (tweet.user.followers_count >= 5000) and (tweet.user.followers_count <= 6000):
             reply = None
             try:
                 reply = bot(tweet.text, tweet.user.screen_name)
